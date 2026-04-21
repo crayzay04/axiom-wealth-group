@@ -25,12 +25,12 @@ export default function TestimonialCard({
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       whileHover={{
-        y: -4,
-        boxShadow: "0 0 30px rgba(201,168,76,0.15)",
+        y: -6,
+        boxShadow: "0 0 40px rgba(201,168,76,0.18)",
       }}
-      className="bg-card rounded-xl p-6 md:p-8 border border-border-gold"
+      className="group bg-card rounded-xl p-6 md:p-8 border border-border-gold hover:border-gold/50 transition-colors duration-300"
     >
-      <Quote className="w-8 h-8 text-gold/40 mb-4" />
+      <Quote className="w-8 h-8 text-gold/40 mb-4 transition-all duration-300 group-hover:text-gold/70 group-hover:scale-110" />
       <p className="text-foreground/90 text-sm md:text-base leading-relaxed italic">
         &ldquo;{quote}&rdquo;
       </p>

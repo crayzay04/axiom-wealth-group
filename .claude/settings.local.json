@@ -19,7 +19,8 @@
       "mcp__Claude_Preview__preview_start",
       "Bash(gh auth *)",
       "Bash(vercel --version)",
-      "WebFetch(domain:axiom-wealth-group.vercel.app)"
+      "WebFetch(domain:axiom-wealth-group.vercel.app)",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(d.get\\('version','?'\\)\\)\")"
     ]
   }
 }

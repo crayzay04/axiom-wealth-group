@@ -147,9 +147,10 @@ export default function HomePage() {
           <div className="text-center mt-10">
             <Link
               href="/services"
-              className="text-gold text-sm border-b border-gold/30 hover:border-gold transition-colors pb-1"
+              className="group inline-flex items-center gap-1 text-gold text-sm border-b border-gold/30 hover:border-gold transition-all pb-1"
             >
-              View All Services →
+              View All Services
+              <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
             </Link>
           </div>
         </div>
@@ -281,9 +282,10 @@ export default function HomePage() {
         <div className="text-center mt-10">
           <Link
             href="/testimonials"
-            className="text-gold text-sm border-b border-gold/30 hover:border-gold transition-colors pb-1"
+            className="group inline-flex items-center gap-1 text-gold text-sm border-b border-gold/30 hover:border-gold transition-all pb-1"
           >
-            Read More Stories →
+            Read More Stories
+            <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
           </Link>
         </div>
       </SectionWrapper>
@@ -309,7 +311,7 @@ export default function HomePage() {
           </h2>
           <Link
             href="/contact"
-            className="inline-block gold-gradient-bg text-background font-semibold px-10 py-4 rounded-lg hover:opacity-90 transition-opacity"
+            className="inline-block gold-gradient-bg text-background font-semibold px-10 py-4 rounded-lg transition-all duration-200 hover:opacity-90 hover:scale-[1.03] hover:shadow-[0_0_32px_rgba(201,168,76,0.45)] active:scale-[0.98]"
           >
             Schedule Your Free Consultation
           </Link>

@@ -30,13 +30,13 @@ export default function ServiceCard({
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       whileHover={{
-        y: -4,
-        boxShadow: "0 0 30px rgba(201,168,76,0.15)",
+        y: -6,
+        boxShadow: "0 0 40px rgba(201,168,76,0.18)",
       }}
-      className="bg-card rounded-xl p-6 md:p-8 border border-border-gold transition-colors hover:border-gold/40"
+      className="group bg-card rounded-xl p-6 md:p-8 border border-border-gold transition-colors duration-300 hover:border-gold/50"
     >
-      <div className="w-12 h-12 rounded-lg bg-gold/10 flex items-center justify-center mb-4">
-        <IconComponent className="w-6 h-6 text-gold" />
+      <div className="w-12 h-12 rounded-lg bg-gold/10 flex items-center justify-center mb-4 transition-all duration-300 group-hover:bg-gold/20 group-hover:scale-110">
+        <IconComponent className="w-6 h-6 text-gold transition-transform duration-300 group-hover:scale-110" />
       </div>
       <h3 className="text-xl md:text-2xl font-heading font-semibold text-foreground mb-3">
         {title}

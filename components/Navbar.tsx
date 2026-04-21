@@ -51,13 +51,14 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-sm tracking-wide transition-colors hover:text-gold ${
-                    pathname === link.href
-                      ? "text-gold"
-                      : "text-muted"
+                  className={`text-sm tracking-wide transition-colors relative group ${
+                    pathname === link.href ? "text-gold" : "text-muted hover:text-gold"
                   }`}
                 >
                   {link.label}
+                  <span className={`absolute -bottom-1 left-0 h-px bg-gold transition-all duration-300 ${
+                    pathname === link.href ? "w-full" : "w-0 group-hover:w-full"
+                  }`} />
                 </Link>
               ))}
             </div>
@@ -66,7 +67,7 @@ export default function Navbar() {
             <div className="flex items-center gap-4">
               <Link
                 href="/portal"
-                className="hidden sm:inline-flex text-sm border border-gold/40 text-gold px-5 py-2 rounded-lg hover:bg-gold/10 transition-colors"
+                className="hidden sm:inline-flex text-sm border border-gold/40 text-gold px-5 py-2 rounded-lg transition-all duration-200 hover:bg-gold/10 hover:border-gold/70 hover:scale-[1.03] hover:shadow-[0_0_16px_rgba(201,168,76,0.2)] active:scale-[0.97]"
               >
                 Client Portal
               </Link>
