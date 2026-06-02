@@ -1,5 +1,6 @@
 export const SITE = {
   name: "Axiom Wealth Group",
+  url: "https://axiomwgllc.com",
   tagline: "Clarity in Every Decision.",
   description:
     "Comprehensive wealth strategies built around your life, your goals, and your legacy.",
@@ -14,7 +15,6 @@ export const NAV_LINKS = [
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Team", href: "/team" },
-  { label: "Testimonials", href: "/testimonials" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -157,51 +157,6 @@ export const TEAM = [
   },
 ];
 
-export const TESTIMONIALS = [
-  {
-    quote:
-      "Axiom completely transformed how we think about our finances. For the first time, we feel like every piece of our plan is working together toward a common goal. The peace of mind is invaluable.",
-    name: "Michael T.",
-    descriptor: "Retired Executive",
-    rating: 5,
-  },
-  {
-    quote:
-      "After years of working with large firms where I felt like a number, Axiom was a breath of fresh air. James and his team truly know our family, our goals, and our concerns.",
-    name: "Sandra M.",
-    descriptor: "Business Owner",
-    rating: 5,
-  },
-  {
-    quote:
-      "The tax strategies alone saved us more than we expected. But beyond the numbers, the team at Axiom genuinely cares about our long-term well-being. They are advisors in the truest sense.",
-    name: "Robert & Linda K.",
-    descriptor: "Retirees",
-    rating: 5,
-  },
-  {
-    quote:
-      "When I sold my company, I needed a team I could trust to manage the proceeds wisely. Axiom developed a plan that gave me confidence in my family's future for generations.",
-    name: "Daniel W.",
-    descriptor: "Entrepreneur",
-    rating: 5,
-  },
-  {
-    quote:
-      "What sets Axiom apart is their transparency. Every decision is explained, every fee is clear, and I never feel pressured. It is exactly what a financial relationship should be.",
-    name: "Patricia H.",
-    descriptor: "Physician",
-    rating: 5,
-  },
-  {
-    quote:
-      "We came to Axiom during a major life transition and they handled everything with incredible sensitivity and professionalism. They did not just manage our money — they helped us find clarity.",
-    name: "Jennifer & Mark S.",
-    descriptor: "Educators",
-    rating: 5,
-  },
-];
-
 export const VALUES = [
   {
     title: "Integrity",
@@ -256,7 +211,6 @@ export const FOOTER_LINKS = {
   company: [
     { label: "About Us", href: "/about" },
     { label: "Our Team", href: "/team" },
-    { label: "Client Stories", href: "/testimonials" },
     { label: "Contact", href: "/contact" },
   ],
   services: [

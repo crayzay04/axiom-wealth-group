@@ -9,21 +9,52 @@ import { SITE, SERVICES } from "@/lib/constants";
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData);
+    setError(null);
 
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData) as Record<string, string>;
+
+    // Honeypot: a hidden field real users never see. If it's filled, it's a bot —
+    // pretend success so the bot moves on, but don't submit anything.
+    if (data.website) {
+      setSubmitted(true);
+      return;
+    }
+
+    const name = data.name?.trim();
+    const email = data.email?.trim();
+    const message = data.message?.trim();
+    const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email ?? "");
+
+    if (!name || !email || !message) {
+      setError("Please fill in your name, email, and message.");
+      return;
+    }
+    if (!emailValid) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+
+    setSubmitting(true);
     try {
-      await fetch("/api/contact", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, name, email, message }),
       });
+      if (!res.ok) throw new Error("Request failed");
       setSubmitted(true);
     } catch {
-      alert("Something went wrong. Please try again.");
+      setError(
+        "Something went wrong sending your message. Please try again, or email us directly."
+      );
+    } finally {
+      setSubmitting(false);
     }
   }
 
@@ -108,7 +139,27 @@ export default function ContactPage() {
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+                  {/* Honeypot — hidden from humans, catches bots. Do not remove. */}
+                  <div
+                    aria-hidden="true"
+                    style={{
+                      position: "absolute",
+                      left: "-9999px",
+                      width: 1,
+                      height: 1,
+                      overflow: "hidden",
+                    }}
+                  >
+                    <label htmlFor="website">Leave this field empty</label>
+                    <input
+                      id="website"
+                      name="website"
+                      type="text"
+                      tabIndex={-1}
+                      autoComplete="off"
+                    />
+                  </div>
                   <div>
                     <label
                       htmlFor="name"
@@ -191,11 +242,20 @@ export default function ContactPage() {
                       className="w-full bg-background border border-border-gold rounded-lg px-4 py-3 text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold/50 transition-all resize-none"
                     />
                   </div>
+                  {error && (
+                    <p
+                      role="alert"
+                      className="text-sm text-red-400 bg-red-500/10 border border-red-500/20 rounded-lg px-4 py-3"
+                    >
+                      {error}
+                    </p>
+                  )}
                   <button
                     type="submit"
-                    className="w-full gold-gradient-bg text-background font-semibold py-3 rounded-lg hover:opacity-90 transition-opacity text-sm"
+                    disabled={submitting}
+                    className="w-full gold-gradient-bg text-background font-semibold py-3 rounded-lg hover:opacity-90 transition-opacity text-sm disabled:opacity-60 disabled:cursor-not-allowed"
                   >
-                    Send Message
+                    {submitting ? "Sending…" : "Send Message"}
                   </button>
                 </form>
               )}

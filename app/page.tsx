@@ -278,16 +278,6 @@ export default function HomePage() {
           <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-background" />
           <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-background" />
         </div>
-
-        <div className="text-center mt-10">
-          <Link
-            href="/testimonials"
-            className="group inline-flex items-center gap-1 text-gold text-sm border-b border-gold/30 hover:border-gold transition-all pb-1"
-          >
-            Read More Stories
-            <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
-          </Link>
-        </div>
       </SectionWrapper>
 
       {/* CTA Banner */}

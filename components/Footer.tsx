@@ -105,7 +105,8 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-muted text-xs">
-              © 2025 Axiom Wealth Group. All rights reserved. |{" "}
+              © {new Date().getFullYear()} Axiom Wealth Group. All rights
+              reserved. |{" "}
               <Link href="#" className="hover:text-gold transition-colors">
                 Privacy Policy
               </Link>{" "}

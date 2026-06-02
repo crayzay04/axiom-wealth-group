@@ -63,14 +63,8 @@ export default function Navbar() {
               ))}
             </div>
 
-            {/* Client Portal + Mobile Toggle */}
+            {/* Mobile Toggle */}
             <div className="flex items-center gap-4">
-              <Link
-                href="/portal"
-                className="hidden sm:inline-flex text-sm border border-gold/40 text-gold px-5 py-2 rounded-lg transition-all duration-200 hover:bg-gold/10 hover:border-gold/70 hover:scale-[1.03] hover:shadow-[0_0_16px_rgba(201,168,76,0.2)] active:scale-[0.97]"
-              >
-                Client Portal
-              </Link>
               <button
                 onClick={() => setMobileOpen(true)}
                 className="lg:hidden text-foreground"
@@ -129,19 +123,6 @@ export default function Navbar() {
                     </Link>
                   </motion.div>
                 ))}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: NAV_LINKS.length * 0.05 }}
-                >
-                  <Link
-                    href="/portal"
-                    onClick={() => setMobileOpen(false)}
-                    className="text-lg border border-gold/40 text-gold px-6 py-3 rounded-lg hover:bg-gold/10 transition-colors"
-                  >
-                    Client Portal
-                  </Link>
-                </motion.div>
               </div>
             </div>
           </motion.div>
