@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Wealth management, retirement, investment advisory, tax, estate, and insurance planning — comprehensive strategies tailored to your goals.",
+    "Wealth management, retirement, cash flow management, tax, estate, and insurance planning — comprehensive strategies tailored to your goals.",
 };
 
 export default function ServicesLayout({

@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s — Axiom Wealth Group",
   },
   description:
-    "Comprehensive wealth strategies built around your life, your goals, and your legacy. Axiom Wealth Group is a registered investment advisor serving high-net-worth families.",
+    "Comprehensive wealth strategies built around your life, your goals, and your legacy. Axiom Wealth Group provides cash flow management and financial planning for families.",
   openGraph: {
     type: "website",
     siteName: SITE.name,

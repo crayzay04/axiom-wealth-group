@@ -59,7 +59,7 @@ const MARQUEE_TESTIMONIALS = [
   {
     name: "Angela R.",
     role: "Small Business Owner",
-    quote: "I had never had an advisor who looked at the full picture — business and personal together. Axiom changed that.",
+    quote: "I had never had a team that looked at the full picture — business and personal together. Axiom changed that.",
     img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face",
   },
   {
@@ -122,7 +122,7 @@ export default function HomePage() {
       {/* Stats Bar */}
       <SectionWrapper className="py-16 bg-bg-secondary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 divide-x divide-gold/20">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 divide-x divide-gold/20">
             {STATS.map((stat) => (
               <StatCounter key={stat.label} {...stat} />
             ))}
@@ -207,10 +207,10 @@ export default function HomePage() {
                 Built on Trust and Transparency
               </h3>
               <p className="text-muted leading-relaxed">
-                We are a fiduciary firm — meaning we are legally obligated to
-                act in your best interest. Beyond compliance, transparency is
-                woven into our culture. Every fee is disclosed, every strategy
-                explained, and every decision made collaboratively with you.
+                Putting your interests first is the foundation of how we work.
+                Transparency is woven into our culture. Every fee is disclosed,
+                every strategy explained, and every decision made
+                collaboratively with you.
               </p>
             </motion.div>
             <motion.div

@@ -117,14 +117,11 @@ export default function Footer() {
             </p>
           </div>
           <p className="text-muted/50 text-[10px] mt-4 leading-relaxed max-w-4xl">
-            Axiom Wealth Group is a registered investment advisor. Information
-            presented is for educational purposes only and does not intend to
-            make an offer or solicitation for the sale or purchase of any
-            specific securities, investments, or investment strategies.
-            Investments involve risk and, unless otherwise stated, are not
-            guaranteed. Past performance is not indicative of future results.
-            Registration with the SEC does not imply a certain level of skill or
-            training. FINRA member. SIPC protected.
+            Axiom Wealth Group provides financial planning and cash flow
+            management services. Information presented is for educational
+            purposes only and does not constitute financial, tax, or legal
+            advice, nor an offer or solicitation to buy or sell any product or
+            service. FINRA member.
           </p>
         </div>
       </div>

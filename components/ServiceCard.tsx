@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import * as Icons from "lucide-react";
 
 interface ServiceCardProps {
@@ -58,9 +59,12 @@ export default function ServiceCard({
         </ul>
       )}
       {expanded && (
-        <button className="mt-6 text-sm text-gold border border-gold/30 rounded-lg px-4 py-2 hover:bg-gold/10 transition-colors">
-          Learn More
-        </button>
+        <Link
+          href="/contact"
+          className="inline-block mt-6 text-sm text-gold border border-gold/30 rounded-lg px-4 py-2 hover:bg-gold/10 transition-colors"
+        >
+          Get in Touch
+        </Link>
       )}
     </motion.div>
   );

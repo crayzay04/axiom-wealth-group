@@ -19,7 +19,6 @@ export const NAV_LINKS = [
 ];
 
 export const STATS = [
-  { value: 2.4, prefix: "$", suffix: "B+", label: "Assets Under Management" },
   { value: 500, prefix: "", suffix: "+", label: "Families Served" },
   { value: 25, prefix: "", suffix: "+", label: "Years of Experience" },
   { value: 98, prefix: "", suffix: "%", label: "Client Retention Rate" },
@@ -30,9 +29,9 @@ export const SERVICES = [
     title: "Wealth Management",
     icon: "TrendingUp",
     description:
-      "Our holistic wealth management approach integrates every facet of your financial life into one coherent strategy. We go beyond portfolio management to address cash flow, tax efficiency, and long-term growth.",
+      "Our holistic wealth management approach integrates every facet of your financial life into one coherent strategy — addressing cash flow, tax efficiency, and long-term growth so the pieces work together.",
     offerings: [
-      "Customized portfolio construction",
+      "Personalized financial roadmap",
       "Risk assessment and mitigation",
       "Cash flow and liquidity planning",
       "Multi-generational wealth transfer",
@@ -51,15 +50,15 @@ export const SERVICES = [
     ],
   },
   {
-    title: "Investment Advisory",
-    icon: "BarChart3",
+    title: "Cash Flow Management",
+    icon: "Wallet",
     description:
-      "Our evidence-based investment philosophy balances growth potential with disciplined risk management. Every recommendation is grounded in rigorous research and aligned to your specific objectives.",
+      "Lasting wealth starts with knowing exactly where your money goes and putting it to work with intention. Our cash flow management approach aligns your income, spending, and savings so every dollar supports your goals.",
     offerings: [
-      "Diversified asset allocation",
-      "Alternative investment access",
-      "ESG and impact investing options",
-      "Quarterly performance reviews",
+      "Income and expense analysis",
+      "Budgeting and savings strategy",
+      "Debt reduction planning",
+      "Liquidity and emergency reserves",
     ],
   },
   {
@@ -114,44 +113,38 @@ export const SERVICES = [
 
 export const TEAM = [
   {
-    name: "James R. Harmon, CFP®",
-    title: "Founder & Senior Wealth Advisor",
-    bio: "With over 28 years in financial services, James founded Axiom Wealth Group on the belief that every client deserves institutional-quality guidance. He specializes in comprehensive wealth management for high-net-worth families.",
+    name: "Jason Carter",
+    title: "Founder & Senior Wealth Coordinator",
     image:
       "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=face",
   },
   {
-    name: "Catherine L. Nguyen, CFA",
-    title: "Chief Investment Officer",
-    bio: "Catherine leads our investment committee with a disciplined, research-driven approach. Previously with Morgan Stanley, she brings deep expertise in portfolio construction and alternative investments.",
+    name: "Catherine L. Nguyen",
+    title: "Financial Representative",
     image:
       "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face",
   },
   {
-    name: "David M. Chen, CFP®, CPA",
-    title: "Director of Tax Strategy",
-    bio: "David bridges the gap between financial planning and tax optimization. His dual credentials allow him to craft strategies that maximize after-tax wealth for individuals and business owners alike.",
+    name: "David M. Chen",
+    title: "Financial Representative",
     image:
       "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
   },
   {
-    name: "Rebecca A. Torres, J.D.",
-    title: "Estate Planning Specialist",
-    bio: "Rebecca brings a legal perspective to financial planning, ensuring that estate strategies are both tax-efficient and legally sound. She works closely with client attorneys to protect multi-generational wealth.",
+    name: "Rebecca A. Torres",
+    title: "Financial Representative",
     image:
       "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&crop=face",
   },
   {
-    name: "Marcus K. Williams, CFP®",
-    title: "Retirement Planning Advisor",
-    bio: "Marcus is passionate about helping clients transition into retirement with confidence. He specializes in income distribution strategies, Social Security optimization, and healthcare planning.",
+    name: "Marcus K. Williams",
+    title: "Financial Representative",
     image:
       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
   },
   {
-    name: "Elena V. Petrova, MBA",
-    title: "Client Relationship Manager",
-    bio: "Elena ensures that every client interaction reflects the care and attention Axiom is known for. She coordinates across our advisory team to deliver a seamless, white-glove experience.",
+    name: "Elena V. Petrova",
+    title: "Financial Representative",
     image:
       "https://images.unsplash.com/photo-1598550874175-4d0ef436c909?w=400&h=400&fit=crop&crop=face",
   },
@@ -176,7 +169,7 @@ export const VALUES = [
   {
     title: "Partnership",
     icon: "Handshake",
-    description: "Your advisor is a lifelong ally, not a transaction.",
+    description: "Your team is a lifelong ally, not a transaction.",
   },
 ];
 
@@ -197,7 +190,7 @@ export const PROCESS_STEPS = [
     step: 3,
     title: "Custom Strategy",
     description:
-      "We design a comprehensive, personalized plan that integrates investments, tax planning, estate goals, and risk management.",
+      "We design a comprehensive, personalized plan that integrates cash flow management, tax planning, estate goals, and risk management.",
   },
   {
     step: 4,
@@ -216,7 +209,7 @@ export const FOOTER_LINKS = {
   services: [
     { label: "Wealth Management", href: "/services" },
     { label: "Retirement Planning", href: "/services" },
-    { label: "Investment Advisory", href: "/services" },
+    { label: "Cash Flow Management", href: "/services" },
     { label: "Tax Planning", href: "/services" },
   ],
   legal: [

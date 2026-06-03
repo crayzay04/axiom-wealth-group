@@ -54,7 +54,7 @@ export default function AboutPage() {
                   institutions.
                 </p>
                 <p>
-                  Our founder, James Harmon, spent the first decade of his
+                  Our founder, Jason Carter, spent the first decade of his
                   career at a major Wall Street firm. He saw firsthand how
                   conflicts of interest and product-driven models failed the
                   very people they were meant to serve. He left to build
@@ -63,11 +63,11 @@ export default function AboutPage() {
                   matter.
                 </p>
                 <p>
-                  Today, Axiom manages over $2.4 billion in assets for more
-                  than 500 families. We have grown deliberately, never
-                  sacrificing the depth of our relationships for breadth. Each
-                  client works with a dedicated advisory team that understands
-                  their full financial picture — not just their portfolio.
+                  Today, Axiom serves more than 500 families. We have grown
+                  deliberately, never sacrificing the depth of our relationships
+                  for breadth. Each client works with a dedicated team that
+                  understands their full financial picture — not just one piece
+                  of it.
                 </p>
               </div>
             </motion.div>
@@ -125,12 +125,7 @@ export default function AboutPage() {
             Credentials & Affiliations
           </h3>
           <div className="flex flex-wrap items-center justify-center gap-6">
-            {[
-              "CFP® Certified",
-              "CPA Licensed",
-              "FINRA Member",
-              "SEC Registered RIA",
-            ].map((badge) => (
+            {["FINRA Members"].map((badge) => (
               <div
                 key={badge}
                 className="border border-gold/20 rounded-lg px-6 py-3 text-sm text-muted"
