@@ -10,6 +10,11 @@ const ShaderAnimation = dynamic(
   { ssr: false }
 );
 
+const GodRays = dynamic(
+  () => import("@paper-design/shaders-react").then((m) => m.GodRays),
+  { ssr: false }
+);
+
 interface HeroSectionProps {
   title: string;
   subtitle?: string;
@@ -60,23 +65,34 @@ export default function HeroSection({
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-gold/5 blur-[120px]" />
       </div>
 
-      {/* Floating geometric grid (sub-pages only) */}
+      {/* GodRays lighting effect (sub-page headers) */}
       {!fullHeight && (
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          {Array.from({ length: 8 }).map((_, i) => (
-            <div
-              key={i}
-              className="absolute border border-gold/5 rounded-sm animate-float"
-              style={{
-                width: `${20 + Math.random() * 30}px`,
-                height: `${20 + Math.random() * 30}px`,
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${i * 0.5}s`,
-                animationDuration: `${5 + Math.random() * 5}s`,
-              }}
-            />
-          ))}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ opacity: 0.6 }}
+        >
+          <GodRays
+            colorBack="#00000000"
+            colors={["#C9A84C40", "#E2C27D40", "#A8832A40", "#C9A84C30"]}
+            colorBloom="#E2C27D"
+            offsetX={0.85}
+            offsetY={-1}
+            intensity={0.5}
+            spotty={0.45}
+            midSize={10}
+            midIntensity={0}
+            density={0.38}
+            bloom={0.3}
+            speed={0.5}
+            scale={1.6}
+            style={{
+              height: "100%",
+              width: "100%",
+              position: "absolute",
+              top: 0,
+              left: 0,
+            }}
+          />
         </div>
       )}
 

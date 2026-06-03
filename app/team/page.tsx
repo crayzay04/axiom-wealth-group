@@ -18,29 +18,18 @@ export default function TeamPage() {
       />
 
       <SectionWrapper className="py-20 md:py-28">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-          {/* Tier 1 — Founder */}
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+          {/* Top — Founder */}
           <div className="flex justify-center">
-            <div className="w-full sm:w-72">
+            <div className="w-full max-w-[16rem]">
               <TeamCard {...TEAM[0]} index={0} />
             </div>
           </div>
 
-          {/* Tier 2 */}
-          <div className="flex flex-col sm:flex-row justify-center gap-6">
-            {TEAM.slice(1, 3).map((member, i) => (
-              <div key={member.name} className="w-full sm:w-72">
-                <TeamCard {...member} index={i + 1} />
-              </div>
-            ))}
-          </div>
-
-          {/* Tier 3 */}
-          <div className="flex flex-col sm:flex-row justify-center gap-6">
-            {TEAM.slice(3, 6).map((member, i) => (
-              <div key={member.name} className="w-full sm:w-72">
-                <TeamCard {...member} index={i + 3} />
-              </div>
+          {/* Base row of three */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
+            {TEAM.slice(1, 4).map((member, i) => (
+              <TeamCard key={member.name} {...member} index={i + 1} />
             ))}
           </div>
         </div>

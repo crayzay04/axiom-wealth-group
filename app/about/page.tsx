@@ -54,7 +54,7 @@ export default function AboutPage() {
                   institutions.
                 </p>
                 <p>
-                  Our founder, Jason Carter, spent the first decade of his
+                  Our founder, Jason Doss-Carter, spent the first decade of his
                   career at a major Wall Street firm. He saw firsthand how
                   conflicts of interest and product-driven models failed the
                   very people they were meant to serve. He left to build

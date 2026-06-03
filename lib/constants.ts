@@ -4,9 +4,9 @@ export const SITE = {
   tagline: "Clarity in Every Decision.",
   description:
     "Comprehensive wealth strategies built around your life, your goals, and your legacy.",
-  address: "123 Financial Plaza, Suite 400, Sacramento, CA 95814",
-  phone: "(916) 555-0100",
-  email: "info@axiomwealthgroup.com",
+  address: "5501 Ming Avenue, Suite 265, Bakersfield, CA 93309",
+  phone: "(818) 726-0541",
+  email: "JCarter@AxWealthGroup.com",
   hours: "Mon–Fri, 8:00 AM – 5:00 PM PT",
 };
 
@@ -113,40 +113,24 @@ export const SERVICES = [
 
 export const TEAM = [
   {
-    name: "Jason Carter",
-    title: "Founder & Senior Wealth Coordinator",
-    image:
-      "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=face",
+    name: "Jason Doss-Carter",
+    title: "Founder & CEO",
+    image: "",
   },
   {
-    name: "Catherine L. Nguyen",
+    name: "Nikki",
     title: "Financial Representative",
-    image:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face",
+    image: "/team/nikki.jpg",
   },
   {
-    name: "David M. Chen",
+    name: "Luis",
     title: "Financial Representative",
-    image:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
+    image: "/team/luis.jpg",
   },
   {
-    name: "Rebecca A. Torres",
+    name: "Lyle",
     title: "Financial Representative",
-    image:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&crop=face",
-  },
-  {
-    name: "Marcus K. Williams",
-    title: "Financial Representative",
-    image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
-  },
-  {
-    name: "Elena V. Petrova",
-    title: "Financial Representative",
-    image:
-      "https://images.unsplash.com/photo-1598550874175-4d0ef436c909?w=400&h=400&fit=crop&crop=face",
+    image: "",
   },
 ];
 

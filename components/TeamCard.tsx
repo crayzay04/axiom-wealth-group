@@ -2,13 +2,22 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ExternalLink } from "lucide-react";
 
 interface TeamCardProps {
   name: string;
   title: string;
-  image: string;
+  image?: string;
   index?: number;
+}
+
+function getInitials(name: string) {
+  return name
+    .split(" ")
+    .map((part) => part[0])
+    .filter(Boolean)
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
 }
 
 export default function TeamCard({
@@ -27,28 +36,31 @@ export default function TeamCard({
         y: -6,
         boxShadow: "0 0 40px rgba(201,168,76,0.18)",
       }}
-      className="group bg-card rounded-xl p-6 text-center border border-border-gold hover:border-gold/50 transition-colors duration-300"
+      className="group bg-card rounded-xl p-4 text-center border border-border-gold hover:border-gold/50 transition-colors duration-300"
     >
-      <div className="w-28 h-28 mx-auto mb-4 rounded-full overflow-hidden border-2 border-gold/30 transition-all duration-300 group-hover:border-gold/60 group-hover:shadow-[0_0_20px_rgba(201,168,76,0.25)]">
-        <Image
-          src={image}
-          alt={name}
-          width={112}
-          height={112}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-        />
+      {/* Square photo slot */}
+      <div className="relative aspect-square w-full overflow-hidden rounded-lg border border-gold/30 transition-all duration-300 group-hover:border-gold/60 group-hover:shadow-[0_0_20px_rgba(201,168,76,0.25)]">
+        {image ? (
+          <Image
+            src={image}
+            alt={name}
+            fill
+            sizes="(max-width: 640px) 100vw, 280px"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        ) : (
+          <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-card to-background">
+            <span className="font-heading text-5xl text-gold/50">
+              {getInitials(name)}
+            </span>
+          </div>
+        )}
       </div>
-      <h3 className="text-lg font-heading font-semibold text-foreground">
+
+      <h3 className="mt-4 text-lg font-heading font-semibold text-foreground">
         {name}
       </h3>
-      <p className="text-gold text-sm mt-1">{title}</p>
-      <a
-        href="#"
-        className="inline-flex items-center gap-1 text-gold/60 hover:text-gold text-sm mt-4 transition-colors"
-      >
-        <ExternalLink className="w-4 h-4" />
-        LinkedIn
-      </a>
+      <p className="mt-1 text-gold text-sm">{title}</p>
     </motion.div>
   );
 }
