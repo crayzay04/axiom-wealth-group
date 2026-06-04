@@ -1,18 +1,25 @@
-"use client";
-
-import Image from "next/image";
-
 export default function AxiomLogo({ className = "w-10 h-10" }: { className?: string }) {
   return (
-    <span className={`relative inline-block ${className}`}>
-      <Image
-        src="/logo-mark.png"
-        alt="Axiom Wealth Group"
-        fill
-        sizes="48px"
-        className="object-contain"
-        priority
+    <svg
+      viewBox="0 0 140 122"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      role="img"
+      aria-label="Axiom Wealth Group"
+    >
+      <path
+        d="M30 97.5L2 115.5L1.5 115V114L69 0L98.5 52H99.5L99 53.5L87 61L69 30.5L54 55.5L65.5 74L53.5 82L45.5 70.5L30 97.5Z"
+        fill="#CFB16B"
       />
-    </span>
+      <path
+        d="M126.5 42.5L0 120.5V121L33 121.5L127.5 43.5V42.5H126.5Z"
+        fill="#9AA0AA"
+      />
+      <path
+        d="M109.5 67L140 120V120.5L139 121L99.5 121.5L98.5 121L71 98L83 88.5L99.5 101.5L111.5 105.5L116.5 106.5L96.5 76.5L109.5 67Z"
+        fill="#9AA0AA"
+      />
+    </svg>
   );
 }
