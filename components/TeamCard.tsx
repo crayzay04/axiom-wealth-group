@@ -8,6 +8,7 @@ interface TeamCardProps {
   title: string;
   image?: string;
   index?: number;
+  featured?: boolean;
 }
 
 function getInitials(name: string) {
@@ -25,6 +26,7 @@ export default function TeamCard({
   title,
   image,
   index = 0,
+  featured = false,
 }: TeamCardProps) {
   return (
     <motion.div
@@ -33,34 +35,46 @@ export default function TeamCard({
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       whileHover={{
-        y: -6,
-        boxShadow: "0 0 40px rgba(201,168,76,0.18)",
+        y: -8,
+        boxShadow: "0 0 50px rgba(201,168,76,0.2)",
       }}
-      className="group bg-card rounded-xl p-4 text-center border border-border-gold hover:border-gold/50 transition-colors duration-300"
+      className={`group bg-card rounded-2xl p-6 sm:p-7 text-center transition-colors duration-300 ${
+        featured
+          ? "border border-gold/40 hover:border-gold/70"
+          : "border border-border-gold hover:border-gold/50"
+      }`}
     >
       {/* Square photo slot */}
-      <div className="relative aspect-square w-full overflow-hidden rounded-lg border border-gold/30 transition-all duration-300 group-hover:border-gold/60 group-hover:shadow-[0_0_20px_rgba(201,168,76,0.25)]">
+      <div className="relative aspect-square w-full overflow-hidden rounded-xl border border-gold/30 transition-all duration-300 group-hover:border-gold/60 group-hover:shadow-[0_0_24px_rgba(201,168,76,0.25)]">
         {image ? (
           <Image
             src={image}
             alt={name}
             fill
-            sizes="(max-width: 640px) 100vw, 280px"
+            sizes="(max-width: 640px) 90vw, 400px"
             className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
           <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-card to-background">
-            <span className="font-heading text-5xl text-gold/50">
+            <span className="font-heading text-6xl text-gold/50">
               {getInitials(name)}
             </span>
           </div>
         )}
       </div>
 
-      <h3 className="mt-4 text-lg font-heading font-semibold text-foreground">
+      <h3
+        className={`mt-5 font-heading font-semibold text-foreground ${
+          featured ? "text-2xl" : "text-xl"
+        }`}
+      >
         {name}
       </h3>
-      <p className="mt-1 text-gold text-sm">{title}</p>
+      <p
+        className={`mt-1.5 text-gold ${featured ? "text-base" : "text-sm"}`}
+      >
+        {title}
+      </p>
     </motion.div>
   );
 }

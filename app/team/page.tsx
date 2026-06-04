@@ -18,16 +18,16 @@ export default function TeamPage() {
       />
 
       <SectionWrapper className="py-20 md:py-28">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 md:space-y-12">
           {/* Top — Founder */}
           <div className="flex justify-center">
-            <div className="w-full max-w-[16rem]">
-              <TeamCard {...TEAM[0]} index={0} />
+            <div className="w-full max-w-sm">
+              <TeamCard {...TEAM[0]} index={0} featured />
             </div>
           </div>
 
           {/* Base row of three */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {TEAM.slice(1, 4).map((member, i) => (
               <TeamCard key={member.name} {...member} index={i + 1} />
             ))}

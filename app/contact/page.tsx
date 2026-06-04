@@ -115,10 +115,23 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* Map Placeholder */}
-              <div className="mt-8 aspect-[4/3] bg-card rounded-xl border border-border-gold flex items-center justify-center">
-                <p className="text-muted text-sm">Map coming soon</p>
-              </div>
+              {/* Map */}
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=5501%20Ming%20Avenue%20Suite%20265%20Bakersfield%20CA%2093309"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group mt-8 block aspect-[4/3] rounded-xl border border-border-gold overflow-hidden hover:border-gold/50 transition-colors"
+                aria-label="Open Axiom Wealth Group location in Google Maps"
+              >
+                <iframe
+                  title="Axiom Wealth Group — 5501 Ming Avenue, Suite 265, Bakersfield, CA 93309"
+                  src="https://www.google.com/maps?q=5501%20Ming%20Avenue%20Suite%20265%20Bakersfield%20CA%2093309&output=embed"
+                  className="w-full h-full pointer-events-none grayscale-[0.2] transition-all duration-300 group-hover:grayscale-0"
+                  style={{ border: 0 }}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </a>
             </motion.div>
 
             {/* Right: Contact Form */}
@@ -260,23 +273,6 @@ export default function ContactPage() {
                 </form>
               )}
             </motion.div>
-          </div>
-        </div>
-      </SectionWrapper>
-
-      {/* Calendly CTA */}
-      <SectionWrapper className="py-16 bg-bg-secondary">
-        <div className="max-w-3xl mx-auto px-4 text-center">
-          <h3 className="text-2xl font-heading font-bold text-foreground mb-4">
-            Prefer to schedule directly?
-          </h3>
-          <p className="text-muted text-sm mb-6">
-            Book a complimentary consultation at a time that works for you.
-          </p>
-          {/* <!-- Calendly embed will go here --> */}
-          {/* <div id="calendly-embed-contact"></div> */}
-          <div className="border border-border-gold rounded-xl p-10 text-muted text-sm">
-            Calendly scheduling widget will be embedded here.
           </div>
         </div>
       </SectionWrapper>
