@@ -115,7 +115,7 @@ export const TEAM = [
   {
     name: "Jason Doss-Carter",
     title: "Founder & CEO",
-    image: "",
+    image: "/team/jason.jpg",
   },
   {
     name: "Nikki",
@@ -130,7 +130,7 @@ export const TEAM = [
   {
     name: "Lyle",
     title: "Financial Representative",
-    image: "",
+    image: "/team/lyle.jpg",
   },
 ];
 
