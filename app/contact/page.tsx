@@ -42,12 +42,27 @@ export default function ContactPage() {
 
     setSubmitting(true);
     try {
-      const res = await fetch("/api/contact", {
+      // Submit directly to Formspree from the browser. Formspree relies on browser
+      // context (origin, headers) for spam filtering — proxying through our own
+      // server makes it drop submissions as bot traffic. Temporary delivery
+      // mechanism; swap the endpoint for a dedicated email service later.
+      const res = await fetch("https://formspree.io/f/xvznoddq", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data, name, email, message }),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          phone: data.phone,
+          service: data.service,
+          message,
+          _subject: `New contact form submission from ${name}`,
+        }),
       });
-      if (!res.ok) throw new Error("Request failed");
+      const result = await res.json().catch(() => null);
+      if (!res.ok || !result?.ok) throw new Error("Request failed");
       setSubmitted(true);
     } catch {
       setError(
