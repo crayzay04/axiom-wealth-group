@@ -1,25 +1,24 @@
-"use client";
-
 import HeroSection from "@/components/HeroSection";
 import SectionWrapper from "@/components/SectionWrapper";
 import TeamCard from "@/components/TeamCard";
 import { TEAM } from "@/lib/constants";
+import { CONTAINER } from "@/lib/ui";
 
 export default function TeamPage() {
   return (
     <>
       <HeroSection
         title="Meet Your Team"
-        subtitle="Experienced professionals dedicated to your financial success."
+        subtitle="The people who will know your plan by name."
         breadcrumb={[
           { label: "Home", href: "/" },
           { label: "Team", href: "/team" },
         ]}
       />
 
-      <SectionWrapper className="py-20 md:py-28">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 md:space-y-12">
-          {/* Top — Founder */}
+      <SectionWrapper surface>
+        <div className={`${CONTAINER} space-y-8`}>
+          {/* Top: founder */}
           <div className="flex justify-center">
             <div className="w-full max-w-sm">
               <TeamCard {...TEAM[0]} featured />
@@ -27,7 +26,7 @@ export default function TeamPage() {
           </div>
 
           {/* Base row of three */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {TEAM.slice(1, 4).map((member) => (
               <TeamCard key={member.name} {...member} />
             ))}

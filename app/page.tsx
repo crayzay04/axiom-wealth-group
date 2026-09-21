@@ -1,159 +1,154 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import HeroSection from "@/components/HeroSection";
 import SectionWrapper from "@/components/SectionWrapper";
+import SectionHeading from "@/components/SectionHeading";
+import IconCard from "@/components/IconCard";
 import ServiceCard from "@/components/ServiceCard";
-import { SERVICES, SITE } from "@/lib/constants";
+import CTABanner from "@/components/CTABanner";
+import {
+  AUDIENCES,
+  PROCESS_STEPS,
+  SERVICES,
+  SITE,
+  TEAM,
+} from "@/lib/constants";
+import { BODY_TEXT, CONTAINER } from "@/lib/ui";
 
 export default function HomePage() {
   return (
     <>
-      {/* Hero */}
       <HeroSection
-        title="Clarity in Every Decision."
+        home
+        eyebrow="Bakersfield, California"
+        title={SITE.tagline}
         subtitle={SITE.description}
-        showCTA
-        showScroll
-        fullHeight
       />
 
-      {/* Services Preview */}
-      <SectionWrapper className="py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground">
-              What We Do
-            </h2>
-            <div className="w-16 h-0.5 gold-gradient-bg mx-auto mt-4" />
-          </div>
+      {/* Who we serve */}
+      <SectionWrapper surface>
+        <div className={CONTAINER}>
+          <SectionHeading
+            eyebrow="Clients"
+            title="Who we serve"
+          />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {SERVICES.slice(0, 3).map((service, i) => (
-              <ServiceCard key={service.title} {...service} index={i} />
+            {AUDIENCES.map((audience) => (
+              <IconCard key={audience.title} {...audience} />
             ))}
           </div>
-          <div className="text-center mt-10">
+        </div>
+      </SectionWrapper>
+
+      {/* What we do */}
+      <SectionWrapper>
+        <div className={CONTAINER}>
+          <SectionHeading
+            eyebrow="Services"
+            title="What we do"
+          />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {SERVICES.slice(0, 3).map((service) => (
+              <ServiceCard key={service.title} {...service} />
+            ))}
+          </div>
+          <div className="mt-10">
             <Link
               href="/services"
-              className="group inline-flex items-center gap-1 text-gold text-sm border-b border-gold/30 hover:border-gold transition-all pb-1"
+              className="inline-flex items-center gap-2 text-sm text-foreground border-b border-silver pb-1 transition-colors hover:border-foreground"
             >
-              View All Services
-              <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+              View all services
+              <span aria-hidden="true">→</span>
             </Link>
           </div>
         </div>
       </SectionWrapper>
 
-      {/* Why Axiom */}
-      <SectionWrapper className="py-20 md:py-28 bg-bg-secondary">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
-          {/* Row 1 */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-              className="relative aspect-[4/3] rounded-xl overflow-hidden"
-            >
+      {/* How we work */}
+      <SectionWrapper surface>
+        <div className={`${CONTAINER} space-y-20`}>
+          <div className="grid grid-cols-1 md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] gap-12 md:gap-16 items-center">
+            <div className="relative aspect-[4/5] w-full max-w-sm overflow-hidden rounded-xl border border-line">
               <Image
-                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&h=600&fit=crop"
-                alt="Client meeting"
+                src={TEAM[0].image}
+                alt={`${TEAM[0].name}, ${TEAM[0].title}`}
                 fill
-                className="object-cover"
+                sizes="(max-width: 768px) 90vw, 384px"
+                className="object-cover object-top"
               />
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-            >
-              <h3 className="text-2xl md:text-3xl font-heading font-bold text-foreground mb-4">
-                A Personalized Approach
-              </h3>
-              <p className="text-muted leading-relaxed">
-                No two families share the same financial picture. At Axiom, we
-                begin every relationship by listening — deeply and
-                intentionally. Your plan is built from the ground up, reflecting
-                your unique circumstances, aspirations, and values. We do not
-                believe in templates or one-size-fits-all strategies.
+            </div>
+            <div>
+              <SectionHeading
+                eyebrow="How we work"
+                title="One team. One plan."
+                className="mb-8"
+              />
+              <p className={BODY_TEXT}>
+                Most people have pieces of a financial plan spread across an
+                advisor, an insurance agent, a CPA, and an attorney who have
+                never spoken to each other. We start by listening, then build a
+                single strategy that covers cash flow, growth, protection, and
+                legacy, and we coordinate with the other professionals in your
+                life so the pieces fit.
               </p>
-            </motion.div>
+            </div>
           </div>
 
-          {/* Row 2 */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className="order-2 md:order-1"
-            >
-              <h3 className="text-2xl md:text-3xl font-heading font-bold text-foreground mb-4">
-                Built on Trust and Transparency
+          <div className="grid grid-cols-1 md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] gap-12 md:gap-16 items-center">
+            <div>
+              <h3 className="text-xl md:text-2xl font-heading font-semibold text-foreground mb-4">
+                Fees and reasoning, in plain language.
               </h3>
-              <p className="text-muted leading-relaxed">
-                Putting your interests first is the foundation of how we work.
-                Transparency is woven into our culture. Every fee is disclosed,
-                every strategy explained, and every decision made
-                collaboratively with you.
+              <p className={BODY_TEXT}>
+                You will know what a recommendation costs and why we are making
+                it before you decide. If a strategy cannot be explained simply,
+                it is not the right strategy.
               </p>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-              className="relative aspect-[4/3] rounded-xl overflow-hidden order-1 md:order-2"
-            >
-              <Image
-                src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&h=600&fit=crop"
-                alt="Trust and transparency"
-                fill
-                className="object-cover"
-              />
-            </motion.div>
+            </div>
+            <div className="bg-card rounded-xl border border-line p-10 md:p-12">
+              <p className="font-heading text-4xl md:text-5xl leading-[1.1] text-foreground">
+                {SITE.tagline}
+              </p>
+            </div>
           </div>
         </div>
       </SectionWrapper>
 
-      {/* CTA Banner */}
-      <section className="py-20 md:py-28 relative overflow-hidden bg-card">
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(to right, rgba(201,168,76,0.12), rgba(201,168,76,0.06), rgba(201,168,76,0.12))",
-          }}
-        />
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "0px" }}
-          transition={{ duration: 0.7 }}
-          className="relative z-10 max-w-3xl mx-auto px-4 text-center"
-        >
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
-            Ready to take control of your financial future?
-          </h2>
-          <Link
-            href="/contact"
-            className="inline-block gold-gradient-bg text-background font-semibold px-10 py-4 rounded-lg transition-all duration-200 hover:opacity-90 hover:scale-[1.03] hover:shadow-[0_0_32px_rgba(201,168,76,0.45)] active:scale-[0.98]"
-          >
-            Schedule Your Free Consultation
-          </Link>
-          <p className="text-muted text-sm mt-4">
-            No commitment required. Appointments available in-person or
-            virtually.
-          </p>
-          {/* <!-- Calendly embed will go here --> */}
-          {/* <div id="calendly-placeholder"></div> */}
-        </motion.div>
-      </section>
+      {/* Our process */}
+      <SectionWrapper>
+        <div className={CONTAINER}>
+          <SectionHeading
+            eyebrow="Process"
+            title="Our process"
+          />
+          <div className="relative">
+            {/* Connector: vertical on mobile, horizontal on desktop */}
+            <div
+              aria-hidden="true"
+              className="absolute bg-line left-6 top-0 bottom-0 w-px md:left-0 md:right-0 md:top-6 md:bottom-auto md:w-auto md:h-px"
+            />
+            <ol className="relative grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8">
+              {PROCESS_STEPS.map((step) => (
+                <li key={step.step} className="flex gap-6 md:block">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-silver bg-background font-heading text-xl text-foreground">
+                    {step.step}
+                  </div>
+                  <div className="md:mt-6">
+                    <h3 className="text-xl md:text-2xl font-heading font-semibold text-foreground mb-2">
+                      {step.title}
+                    </h3>
+                    <p className="text-base leading-[1.7] text-foreground">
+                      {step.description}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </SectionWrapper>
+
+      <CTABanner surface />
     </>
   );
 }
