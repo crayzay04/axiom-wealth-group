@@ -46,6 +46,7 @@ export default function DisclosuresPage() {
   return (
     <>
       <HeroSection
+        eyebrow="Legal"
         title="Disclosures"
         subtitle="Regulatory information about Axiom Wealth Group and this website."
         breadcrumb={[

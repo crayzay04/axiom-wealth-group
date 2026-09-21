@@ -1,40 +1,41 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import { Cormorant_Garamond, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import MotionProvider from "@/components/MotionProvider";
 import { SITE } from "@/lib/constants";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
+  weight: ["400", "600"],
   variable: "--font-cormorant",
 });
 
-const inter = Inter({
+const sourceSans = Source_Sans_3({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-source-sans",
 });
+
+const DEFAULT_TITLE = "Axiom Wealth Group | Clarity in Every Decision";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: "Axiom Wealth Group — Clarity in Every Decision",
-    template: "%s — Axiom Wealth Group",
+    default: DEFAULT_TITLE,
+    template: "%s | Axiom Wealth Group",
   },
-  description:
-    "Comprehensive wealth strategies built around your life, your goals, and your legacy. Axiom Wealth Group provides cash flow management and financial planning for families.",
+  description: SITE.description,
   openGraph: {
     type: "website",
     siteName: SITE.name,
-    title: "Axiom Wealth Group — Clarity in Every Decision",
+    title: DEFAULT_TITLE,
     description: SITE.description,
     url: SITE.url,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Axiom Wealth Group — Clarity in Every Decision",
+    title: DEFAULT_TITLE,
     description: SITE.description,
   },
 };
@@ -47,12 +48,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cormorant.variable} ${inter.variable} h-full antialiased`}
+      className={`${cormorant.variable} ${sourceSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground font-body">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <MotionProvider>
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </MotionProvider>
       </body>
     </html>
   );

@@ -28,7 +28,7 @@ export default function Footer() {
                 AXIOM WEALTH GROUP
               </span>
             </div>
-            <p className="text-foreground italic font-heading text-lg mb-4">
+            <p className="text-foreground font-heading text-lg mb-4">
               {SITE.tagline}
             </p>
             <address className="text-muted text-sm leading-relaxed not-italic">
@@ -52,7 +52,7 @@ export default function Footer() {
 
           {COLUMNS.map((column) => (
             <nav key={column.heading} aria-label={column.heading}>
-              <h2 className="font-body text-xs text-silver uppercase tracking-[0.18em] mb-4">
+              <h2 className="font-body text-[13px] text-silver uppercase tracking-[0.18em] mb-4">
                 {column.heading}
               </h2>
               <ul className="space-y-3">
