@@ -22,14 +22,14 @@ export default function TeamPage() {
           {/* Top — Founder */}
           <div className="flex justify-center">
             <div className="w-full max-w-sm">
-              <TeamCard {...TEAM[0]} index={0} featured />
+              <TeamCard {...TEAM[0]} featured />
             </div>
           </div>
 
           {/* Base row of three */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {TEAM.slice(1, 4).map((member, i) => (
-              <TeamCard key={member.name} {...member} index={i + 1} />
+            {TEAM.slice(1, 4).map((member) => (
+              <TeamCard key={member.name} {...member} />
             ))}
           </div>
         </div>

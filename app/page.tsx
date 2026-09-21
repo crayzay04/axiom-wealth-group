@@ -5,107 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import HeroSection from "@/components/HeroSection";
 import SectionWrapper from "@/components/SectionWrapper";
-import StatCounter from "@/components/StatCounter";
 import ServiceCard from "@/components/ServiceCard";
-import { STATS, SERVICES, SITE } from "@/lib/constants";
-import { Marquee } from "@/components/ui/3d-testimonials";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Card, CardContent } from "@/components/ui/card";
-import { Star } from "lucide-react";
-
-const MARQUEE_TESTIMONIALS = [
-  {
-    name: "Michael T.",
-    role: "Retired Executive",
-    quote: "Axiom completely transformed how we think about our finances. For the first time, every piece of our plan is working together.",
-    img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=80&h=80&fit=crop&crop=face",
-  },
-  {
-    name: "Sandra M.",
-    role: "Business Owner",
-    quote: "After years with large firms where I felt like a number, Axiom was a breath of fresh air. They truly know our family.",
-    img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&h=80&fit=crop&crop=face",
-  },
-  {
-    name: "Robert & Linda K.",
-    role: "Retirees",
-    quote: "The tax strategies alone saved us more than we expected. But beyond the numbers, the team genuinely cares.",
-    img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&h=80&fit=crop&crop=face",
-  },
-  {
-    name: "Daniel W.",
-    role: "Entrepreneur",
-    quote: "When I sold my company, I needed a team I could trust. Axiom developed a plan that gave me confidence for generations.",
-    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face",
-  },
-  {
-    name: "Patricia H.",
-    role: "Physician",
-    quote: "What sets Axiom apart is their transparency. Every decision is explained, every fee is clear. It is exactly what a financial relationship should be.",
-    img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&h=80&fit=crop&crop=face",
-  },
-  {
-    name: "Jennifer & Mark S.",
-    role: "Educators",
-    quote: "We came during a major life transition and they handled everything with incredible sensitivity. They helped us find clarity.",
-    img: "https://images.unsplash.com/photo-1598550874175-4d0ef436c909?w=80&h=80&fit=crop&crop=face",
-  },
-  {
-    name: "Thomas B.",
-    role: "Corporate Executive",
-    quote: "The estate planning guidance alone was worth every dollar. Axiom made a complex process feel completely manageable.",
-    img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face",
-  },
-  {
-    name: "Angela R.",
-    role: "Small Business Owner",
-    quote: "I had never had a team that looked at the full picture — business and personal together. Axiom changed that.",
-    img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face",
-  },
-  {
-    name: "George L.",
-    role: "Real Estate Investor",
-    quote: "Sophisticated strategies explained in plain language. That is the Axiom difference. I finally feel in control.",
-    img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&crop=face",
-  },
-];
-
-function TestimonialMarqueeCard({
-  img,
-  name,
-  role,
-  quote,
-}: {
-  img: string;
-  name: string;
-  role: string;
-  quote: string;
-}) {
-  return (
-    <Card className="w-52 bg-card border-gold/20">
-      <CardContent className="pt-4">
-        <div className="flex items-center gap-2 mb-3">
-          <Avatar className="size-8 border border-gold/20">
-            <AvatarImage src={img} alt={name} />
-            <AvatarFallback>{name[0]}</AvatarFallback>
-          </Avatar>
-          <div>
-            <p className="text-xs font-semibold text-foreground leading-tight">{name}</p>
-            <p className="text-[10px] text-gold leading-tight">{role}</p>
-          </div>
-        </div>
-        <div className="flex gap-0.5 mb-2">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <Star key={i} className="w-2.5 h-2.5 text-gold fill-gold" />
-          ))}
-        </div>
-        <blockquote className="text-[11px] text-muted leading-relaxed line-clamp-4">
-          &ldquo;{quote}&rdquo;
-        </blockquote>
-      </CardContent>
-    </Card>
-  );
-}
+import { SERVICES, SITE } from "@/lib/constants";
 
 export default function HomePage() {
   return (
@@ -118,17 +19,6 @@ export default function HomePage() {
         showScroll
         fullHeight
       />
-
-      {/* Stats Bar */}
-      <SectionWrapper className="py-16 bg-bg-secondary">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 divide-x divide-gold/20">
-            {STATS.map((stat) => (
-              <StatCounter key={stat.label} {...stat} />
-            ))}
-          </div>
-        </div>
-      </SectionWrapper>
 
       {/* Services Preview */}
       <SectionWrapper className="py-20 md:py-28">
@@ -228,55 +118,6 @@ export default function HomePage() {
               />
             </motion.div>
           </div>
-        </div>
-      </SectionWrapper>
-
-      {/* Testimonials — 3D Marquee */}
-      <SectionWrapper className="py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground">
-              What Our Clients Say
-            </h2>
-            <div className="w-16 h-0.5 gold-gradient-bg mx-auto mt-4" />
-          </div>
-        </div>
-
-        {/* 3D Marquee container */}
-        <div className="relative flex h-[500px] w-full flex-row items-center justify-center overflow-hidden gap-1.5 [perspective:300px]">
-          <div
-            className="flex flex-row items-center gap-4"
-            style={{
-              transform:
-                "translateX(-40px) translateY(0px) translateZ(-40px) rotateX(8deg) rotateY(-3deg) rotateZ(6deg)",
-            }}
-          >
-            <Marquee vertical pauseOnHover repeat={2} className="[--duration:35s]">
-              {MARQUEE_TESTIMONIALS.map((t) => (
-                <TestimonialMarqueeCard key={t.name} {...t} />
-              ))}
-            </Marquee>
-            <Marquee vertical pauseOnHover reverse repeat={2} className="[--duration:35s]">
-              {MARQUEE_TESTIMONIALS.map((t) => (
-                <TestimonialMarqueeCard key={t.name + "-r"} {...t} />
-              ))}
-            </Marquee>
-            <Marquee vertical pauseOnHover repeat={2} className="[--duration:35s] hidden md:flex">
-              {MARQUEE_TESTIMONIALS.map((t) => (
-                <TestimonialMarqueeCard key={t.name + "-2"} {...t} />
-              ))}
-            </Marquee>
-            <Marquee vertical pauseOnHover reverse repeat={2} className="[--duration:35s] hidden lg:flex">
-              {MARQUEE_TESTIMONIALS.map((t) => (
-                <TestimonialMarqueeCard key={t.name + "-3"} {...t} />
-              ))}
-            </Marquee>
-          </div>
-          {/* Gradient fade edges */}
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-background" />
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-background" />
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-background" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-background" />
         </div>
       </SectionWrapper>
 

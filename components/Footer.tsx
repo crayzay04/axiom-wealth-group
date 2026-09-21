@@ -1,127 +1,96 @@
-"use client";
-
 import Link from "next/link";
 import AxiomLogo from "./AxiomLogo";
-import { SITE, FOOTER_LINKS } from "@/lib/constants";
+import ConfirmText from "./ConfirmText";
+import {
+  SITE,
+  FOOTER_LINKS,
+  BROKERCHECK_URL,
+  BROKERCHECK_LINE,
+  DISCLOSURE_TEXT,
+} from "@/lib/constants";
+
+const COLUMNS = [
+  { heading: "Company", links: FOOTER_LINKS.company },
+  { heading: "Services", links: FOOTER_LINKS.services },
+  { heading: "Legal", links: FOOTER_LINKS.legal },
+];
 
 export default function Footer() {
   return (
-    <footer className="bg-background border-t border-gold/20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
+    <footer className="bg-background border-t border-line">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] gap-12">
           {/* Brand */}
-          <div className="lg:col-span-2">
+          <div>
             <div className="flex items-center gap-3 mb-4">
               <AxiomLogo className="w-9 h-9" />
-              <span
-                className="text-foreground font-heading text-base tracking-widest"
-                style={{ letterSpacing: "0.15em" }}
-              >
+              <span className="text-foreground font-heading text-base tracking-[0.15em]">
                 AXIOM WEALTH GROUP
               </span>
             </div>
-            <p className="text-gold italic font-heading text-lg mb-4">
+            <p className="text-foreground italic font-heading text-lg mb-4">
               {SITE.tagline}
             </p>
-            <p className="text-muted text-sm leading-relaxed max-w-sm">
+            <address className="text-muted text-sm leading-relaxed not-italic">
               {SITE.address}
               <br />
-              {SITE.phone}
+              <a
+                href={`tel:${SITE.phoneE164}`}
+                className="hover:text-foreground transition-colors"
+              >
+                {SITE.phone}
+              </a>
               <br />
-              {SITE.email}
-            </p>
+              <a
+                href={`mailto:${SITE.email}`}
+                className="hover:text-foreground transition-colors"
+              >
+                {SITE.email}
+              </a>
+            </address>
           </div>
 
-          {/* Company */}
-          <div>
-            <h4
-              className="text-xs text-muted uppercase tracking-widest mb-4"
-              style={{ letterSpacing: "0.15em" }}
-            >
-              Company
-            </h4>
-            <ul className="space-y-3">
-              {FOOTER_LINKS.company.map((link) => (
-                <li key={link.href + link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-muted hover:text-gold transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Services */}
-          <div>
-            <h4
-              className="text-xs text-muted uppercase tracking-widest mb-4"
-              style={{ letterSpacing: "0.15em" }}
-            >
-              Services
-            </h4>
-            <ul className="space-y-3">
-              {FOOTER_LINKS.services.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-muted hover:text-gold transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Legal */}
-          <div>
-            <h4
-              className="text-xs text-muted uppercase tracking-widest mb-4"
-              style={{ letterSpacing: "0.15em" }}
-            >
-              Legal
-            </h4>
-            <ul className="space-y-3">
-              {FOOTER_LINKS.legal.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-muted hover:text-gold transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {COLUMNS.map((column) => (
+            <nav key={column.heading} aria-label={column.heading}>
+              <h2 className="font-body text-xs text-silver uppercase tracking-[0.18em] mb-4">
+                {column.heading}
+              </h2>
+              <ul className="space-y-3">
+                {column.links.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-muted hover:text-foreground transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ))}
         </div>
       </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-gold/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-muted text-xs">
-              © {new Date().getFullYear()} Axiom Wealth Group. All rights
-              reserved. |{" "}
-              <Link href="#" className="hover:text-gold transition-colors">
-                Privacy Policy
-              </Link>{" "}
-              |{" "}
-              <Link href="#" className="hover:text-gold transition-colors">
-                Disclaimer
-              </Link>
-            </p>
-          </div>
-          <p className="text-muted/50 text-[10px] mt-4 leading-relaxed max-w-4xl">
-            Axiom Wealth Group provides financial planning and cash flow
-            management services. Information presented is for educational
-            purposes only and does not constitute financial, tax, or legal
-            advice, nor an offer or solicitation to buy or sell any product or
-            service. FINRA member.
+      {/* BrokerCheck and disclosures */}
+      <div className="border-t border-line">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-4">
+          <p className="text-sm text-foreground">
+            <a
+              href={BROKERCHECK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-4 decoration-silver hover:decoration-foreground transition-colors"
+            >
+              {BROKERCHECK_LINE}
+            </a>
+            .
+          </p>
+          <p className="text-[13px] text-muted leading-relaxed max-w-[72ch] text-left">
+            <ConfirmText text={DISCLOSURE_TEXT} />
+          </p>
+          <p className="text-[13px] text-muted">
+            © {new Date().getFullYear()} {SITE.name}. All rights reserved.
           </p>
         </div>
       </div>

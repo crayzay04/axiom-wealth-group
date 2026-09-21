@@ -5,7 +5,12 @@ import Image from "next/image";
 import * as Icons from "lucide-react";
 import HeroSection from "@/components/HeroSection";
 import SectionWrapper from "@/components/SectionWrapper";
-import { VALUES } from "@/lib/constants";
+import ConfirmText from "@/components/ConfirmText";
+import BrokerCheckLink from "@/components/BrokerCheckLink";
+import { VALUES, TEAM } from "@/lib/constants";
+
+const FOUNDER_STORY =
+  'Jason founded Axiom Wealth Group in Bakersfield to give families and business owners the kind of coordinated planning that is usually reserved for institutions. [[CONFIRM: one or two sentences of Jason\'s actual background, credentials, and why he started the firm.]] Today the firm serves clients across California with a team that works together on every plan. [[CONFIRM: "across California" or a narrower geography]]';
 
 export default function AboutPage() {
   return (
@@ -44,32 +49,18 @@ export default function AboutPage() {
               transition={{ duration: 0.7, delay: 0.1 }}
             >
               <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
-                Our Story
+                Built by Jason Doss-Carter.
               </h2>
               <div className="space-y-4 text-muted leading-relaxed">
                 <p>
-                  Axiom Wealth Group was founded in 1998 on a simple but
-                  powerful conviction: that every individual and family deserves
-                  access to the same caliber of financial guidance available to
-                  institutions.
-                </p>
-                <p>
-                  Our founder, Jason Doss-Carter, spent the first decade of his
-                  career at a major Wall Street firm. He saw firsthand how
-                  conflicts of interest and product-driven models failed the
-                  very people they were meant to serve. He left to build
-                  something different — a firm where the client&apos;s interests
-                  are not just prioritized, but are the only interests that
-                  matter.
-                </p>
-                <p>
-                  Today, Axiom serves more than 500 families. We have grown
-                  deliberately, never sacrificing the depth of our relationships
-                  for breadth. Each client works with a dedicated team that
-                  understands their full financial picture — not just one piece
-                  of it.
+                  <ConfirmText text={FOUNDER_STORY} />
                 </p>
               </div>
+              <BrokerCheckLink
+                name={TEAM[0].name}
+                url={TEAM[0].brokerCheckUrl}
+                className="mt-6"
+              />
             </motion.div>
           </div>
         </div>
