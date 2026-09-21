@@ -44,27 +44,28 @@ export default function ContactForm() {
 
     setSubmitting(true);
     try {
-      const res = await fetch("https://formspree.io/f/xvznoddq", {
+      const res = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name,
           email,
           phone: data.phone,
           service: data.service,
           message,
-          _subject: `New contact form submission from ${name}`,
         }),
       });
       const result = await res.json().catch(() => null);
-      if (!res.ok || !result?.ok) throw new Error("Request failed");
+      if (!res.ok || !result?.ok) {
+        // Validation and rate-limit messages from the server are safe to show.
+        const showServerMessage = res.status === 400 || res.status === 429;
+        throw new Error(showServerMessage ? result?.error : undefined);
+      }
       setSubmitted(true);
-    } catch {
+    } catch (err) {
       setError(
-        "Something went wrong sending your message. Please try again, or email us directly."
+        (err instanceof Error && err.message) ||
+          "Something went wrong sending your message. Please try again, or email us directly."
       );
     } finally {
       setSubmitting(false);

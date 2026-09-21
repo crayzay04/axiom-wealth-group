@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import HeroSection from "@/components/HeroSection";
 import SectionWrapper from "@/components/SectionWrapper";
 import SectionHeading from "@/components/SectionHeading";
@@ -7,6 +8,12 @@ import { SERVICES, SERVICE_PILLARS } from "@/lib/constants";
 import { CONTAINER } from "@/lib/ui";
 
 const PILLAR_LABELS = ["Pillar one", "Pillar two", "Pillar three"];
+
+export const metadata: Metadata = {
+  title: "Services",
+  description:
+    "Wealth management, retirement, cash flow, insurance, estate, tax, and business financial planning, organized as one plan: Plan, Protect, Optimize.",
+};
 
 export default function ServicesPage() {
   return (

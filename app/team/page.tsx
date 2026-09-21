@@ -1,8 +1,15 @@
+import type { Metadata } from "next";
 import HeroSection from "@/components/HeroSection";
 import SectionWrapper from "@/components/SectionWrapper";
 import TeamCard from "@/components/TeamCard";
 import { TEAM } from "@/lib/constants";
 import { CONTAINER } from "@/lib/ui";
+
+export const metadata: Metadata = {
+  title: "Team",
+  description:
+    "Meet the Axiom Wealth Group team in Bakersfield, California.",
+};
 
 export default function TeamPage() {
   return (

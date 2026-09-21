@@ -40,6 +40,30 @@ export const metadata: Metadata = {
   },
 };
 
+// Widen areaServed once the service geography is confirmed:
+// [[CONFIRM: "across California" or a narrower geography]]
+const JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "FinancialService",
+  name: SITE.name,
+  url: SITE.url,
+  telephone: SITE.phoneE164,
+  email: SITE.email,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: SITE.street,
+    addressLocality: SITE.city,
+    addressRegion: SITE.region,
+    postalCode: SITE.postalCode,
+    addressCountry: "US",
+  },
+  areaServed: {
+    "@type": "City",
+    name: "Bakersfield",
+    containedInPlace: { "@type": "State", name: "California" },
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -51,6 +75,12 @@ export default function RootLayout({
       className={`${cormorant.variable} ${sourceSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground font-body">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(JSON_LD).replace(/</g, "\\u003c"),
+          }}
+        />
         <MotionProvider>
           <Navbar />
           <main className="flex-1">{children}</main>

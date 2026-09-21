@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import HeroSection from "@/components/HeroSection";
 import SectionWrapper from "@/components/SectionWrapper";
@@ -18,6 +19,12 @@ const PENDING_CREDENTIALS = [
   "[[CONFIRM: SIPC]]",
   "[[CONFIRM: any designations held by staff, e.g. CFP, ChFC, CLU]]",
 ];
+
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "About Axiom Wealth Group, a Bakersfield financial planning firm founded by Jason Doss-Carter: our founder, our values, and our affiliations.",
+};
 
 export default function AboutPage() {
   const founder = TEAM[0];

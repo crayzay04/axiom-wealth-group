@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import HeroSection from "@/components/HeroSection";
 import SectionWrapper from "@/components/SectionWrapper";
@@ -13,6 +14,12 @@ const DETAILS = [
   { icon: Mail, label: "Email", value: SITE.email, href: `mailto:${SITE.email}` },
   { icon: Clock, label: "Hours", value: SITE.hours, href: null },
 ];
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Contact Axiom Wealth Group in Bakersfield, California. Book a time or send a message to start a conversation.",
+};
 
 export default function ContactPage() {
   return (
