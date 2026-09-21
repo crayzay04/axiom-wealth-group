@@ -1,136 +1,108 @@
-"use client";
-
-import { motion } from "framer-motion";
+import type { Metadata } from "next";
 import Image from "next/image";
-import * as Icons from "lucide-react";
 import HeroSection from "@/components/HeroSection";
 import SectionWrapper from "@/components/SectionWrapper";
-import { VALUES } from "@/lib/constants";
+import SectionHeading, { Eyebrow } from "@/components/SectionHeading";
+import IconCard from "@/components/IconCard";
+import ConfirmText from "@/components/ConfirmText";
+import BrokerCheckLink from "@/components/BrokerCheckLink";
+import { BROKERCHECK_URL, TEAM, VALUES } from "@/lib/constants";
+import { BODY_TEXT, CONTAINER } from "@/lib/ui";
+
+const HERO_SUBTITLE =
+  'Independent guidance for the people who trust us with their plans. [[CONFIRM: is "independent" accurate given the broker-dealer relationship?]]';
+
+const FOUNDER_STORY =
+  'Jason founded Axiom Wealth Group in Bakersfield to give families and business owners the kind of coordinated planning that is usually reserved for institutions. [[CONFIRM: one or two sentences of Jason\'s actual background, credentials, and why he started the firm.]] Today the firm serves clients across California with a team that works together on every plan. [[CONFIRM: "across California" or a narrower geography]]';
+
+const PENDING_CREDENTIALS = [
+  "[[CONFIRM: SIPC]]",
+  "[[CONFIRM: any designations held by staff, e.g. CFP, ChFC, CLU]]",
+];
+
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "About Axiom Wealth Group, a Bakersfield financial planning firm founded by Jason Doss-Carter: our founder, our values, and our affiliations.",
+};
 
 export default function AboutPage() {
+  const founder = TEAM[0];
+
   return (
     <>
       <HeroSection
-        title="About Us"
-        subtitle="We exist to bring clarity, strategy, and integrity to every financial decision."
+        title="About Axiom"
+        subtitle={<ConfirmText text={HERO_SUBTITLE} />}
         breadcrumb={[
           { label: "Home", href: "/" },
           { label: "About", href: "/about" },
         ]}
       />
 
-      {/* Our Story */}
-      <SectionWrapper className="py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-              className="relative aspect-[4/3] rounded-xl overflow-hidden"
-            >
+      {/* Founder */}
+      <SectionWrapper surface>
+        <div className={CONTAINER}>
+          <div className="grid grid-cols-1 md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] gap-12 md:gap-16 items-center">
+            <div className="relative aspect-[4/5] w-full max-w-sm overflow-hidden rounded-xl border border-line">
               <Image
-                src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop"
-                alt="Axiom Wealth Group office"
+                src={founder.image}
+                alt={`${founder.name}, ${founder.title}`}
                 fill
-                className="object-cover"
+                sizes="(max-width: 768px) 90vw, 384px"
+                className="object-cover object-top"
               />
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-            >
-              <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
-                Our Story
-              </h2>
-              <div className="space-y-4 text-muted leading-relaxed">
-                <p>
-                  Axiom Wealth Group was founded in 1998 on a simple but
-                  powerful conviction: that every individual and family deserves
-                  access to the same caliber of financial guidance available to
-                  institutions.
-                </p>
-                <p>
-                  Our founder, Jason Doss-Carter, spent the first decade of his
-                  career at a major Wall Street firm. He saw firsthand how
-                  conflicts of interest and product-driven models failed the
-                  very people they were meant to serve. He left to build
-                  something different — a firm where the client&apos;s interests
-                  are not just prioritized, but are the only interests that
-                  matter.
-                </p>
-                <p>
-                  Today, Axiom serves more than 500 families. We have grown
-                  deliberately, never sacrificing the depth of our relationships
-                  for breadth. Each client works with a dedicated team that
-                  understands their full financial picture — not just one piece
-                  of it.
-                </p>
-              </div>
-            </motion.div>
+            </div>
+            <div>
+              <SectionHeading
+                eyebrow="Our founder"
+                title="Built by Jason Doss-Carter."
+                className="mb-8"
+              />
+              <p className={BODY_TEXT}>
+                <ConfirmText text={FOUNDER_STORY} />
+              </p>
+              <BrokerCheckLink
+                name={founder.name}
+                url={founder.brokerCheckUrl}
+                className="mt-6"
+              />
+            </div>
           </div>
         </div>
       </SectionWrapper>
 
-      {/* Mission & Values */}
-      <SectionWrapper className="py-20 md:py-28 bg-bg-secondary">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground">
-              Our Values
-            </h2>
-            <div className="w-16 h-0.5 gold-gradient-bg mx-auto mt-4" />
-          </div>
+      {/* Values */}
+      <SectionWrapper>
+        <div className={CONTAINER}>
+          <SectionHeading eyebrow="What guides us" title="Our values" />
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {VALUES.map((value, i) => {
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              const IconComponent = (Icons as any)[value.icon] || Icons.Star;
-              return (
-                <motion.div
-                  key={value.title}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  whileHover={{
-                    y: -4,
-                    boxShadow: "0 0 30px rgba(201,168,76,0.15)",
-                  }}
-                  className="bg-card rounded-xl p-8 border border-border-gold"
-                >
-                  <div className="w-12 h-12 rounded-lg bg-gold/10 flex items-center justify-center mb-4">
-                    <IconComponent className="w-6 h-6 text-gold" />
-                  </div>
-                  <h3 className="text-xl font-heading font-semibold text-gold mb-2">
-                    {value.title}
-                  </h3>
-                  <p className="text-muted text-sm">{value.description}</p>
-                </motion.div>
-              );
-            })}
+            {VALUES.map((value) => (
+              <IconCard key={value.title} {...value} />
+            ))}
           </div>
         </div>
       </SectionWrapper>
 
       {/* Credentials */}
-      <SectionWrapper className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h3
-            className="text-center text-xs text-muted uppercase tracking-widest mb-8"
-            style={{ letterSpacing: "0.15em" }}
-          >
-            Credentials & Affiliations
-          </h3>
-          <div className="flex flex-wrap items-center justify-center gap-6">
-            {["FINRA Members"].map((badge) => (
+      <SectionWrapper surface>
+        <div className={CONTAINER}>
+          <Eyebrow>Credentials and affiliations</Eyebrow>
+          <div className="mt-6 flex flex-wrap items-center gap-4">
+            <a
+              href={BROKERCHECK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-lg border border-line px-6 py-3 text-sm text-foreground transition-colors hover:border-silver"
+            >
+              Member FINRA
+            </a>
+            {PENDING_CREDENTIALS.map((item) => (
               <div
-                key={badge}
-                className="border border-gold/20 rounded-lg px-6 py-3 text-sm text-muted"
+                key={item}
+                className="rounded-lg border border-line px-6 py-3 text-sm"
               >
-                {badge}
+                <ConfirmText text={item} />
               </div>
             ))}
           </div>

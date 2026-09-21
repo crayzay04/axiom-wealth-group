@@ -3,12 +3,26 @@ export const SITE = {
   url: "https://axiomwgllc.com",
   tagline: "Clarity in Every Decision.",
   description:
-    "Comprehensive wealth strategies built around your life, your goals, and your legacy.",
+    "Financial planning, cash flow strategy, and protection for families and business owners who want one team that sees the whole picture.",
   address: "5501 Ming Avenue, Suite 265, Bakersfield, CA 93309",
+  street: "5501 Ming Avenue, Suite 265",
+  city: "Bakersfield",
+  region: "CA",
+  postalCode: "93309",
   phone: "(818) 726-0541",
+  phoneE164: "+18187260541",
   email: "JCarter@AxWealthGroup.com",
-  hours: "Mon–Fri, 8:00 AM – 5:00 PM PT",
+  hours: "Mon to Fri, 8:00 AM to 5:00 PM PT",
+  mapsUrl:
+    "https://www.google.com/maps/search/?api=1&query=5501%20Ming%20Avenue%20Suite%20265%20Bakersfield%20CA%2093309",
+  mapsEmbedUrl:
+    "https://www.google.com/maps?q=5501%20Ming%20Avenue%20Suite%20265%20Bakersfield%20CA%2093309&output=embed",
 };
+
+export const BROKERCHECK_URL = "https://brokercheck.finra.org/";
+
+export const BROKERCHECK_LINE =
+  "Check the background of this firm and its professionals on FINRA's BrokerCheck";
 
 export const NAV_LINKS = [
   { label: "Home", href: "/" },
@@ -18,10 +32,30 @@ export const NAV_LINKS = [
   { label: "Contact", href: "/contact" },
 ];
 
-export const STATS = [
-  { value: 500, prefix: "", suffix: "+", label: "Families Served" },
-  { value: 25, prefix: "", suffix: "+", label: "Years of Experience" },
-  { value: 98, prefix: "", suffix: "%", label: "Client Retention Rate" },
+// Facts the client has not supplied yet are written as [[CONFIRM: ...]] so they
+// render visibly in review and can be found with: grep -rn "CONFIRM" app components lib
+export const DISCLOSURE_TEXT =
+  'Axiom Wealth Group is a member of FINRA. [[CONFIRM: member SIPC? If yes, add "and SIPC".]] [[CONFIRM: Is Axiom Wealth Group itself the registered broker-dealer, or a DBA offering securities through another broker-dealer? If the latter, add "Securities offered through NAME, member FINRA/SIPC."]] Information on this website is for general educational purposes and does not constitute individualized investment, tax, or legal advice, nor an offer or solicitation to buy or sell any security or product. Insurance products are offered through [[CONFIRM: licensed entity name and state license numbers, if required]]. Please consult a qualified professional regarding your specific situation.';
+
+export const AUDIENCES = [
+  {
+    title: "Families",
+    icon: "Users",
+    description:
+      "Households building toward retirement, education, and the transfer of what they have built.",
+  },
+  {
+    title: "Business owners",
+    icon: "Briefcase",
+    description:
+      "Owners who need their business and personal finances to work as one plan.",
+  },
+  {
+    title: "Pre-retirees",
+    icon: "Hourglass",
+    description:
+      "People within ten years of retirement who want a clear income picture before they step away.",
+  },
 ];
 
 export const SERVICES = [
@@ -29,7 +63,7 @@ export const SERVICES = [
     title: "Wealth Management",
     icon: "TrendingUp",
     description:
-      "Our holistic wealth management approach integrates every facet of your financial life into one coherent strategy — addressing cash flow, tax efficiency, and long-term growth so the pieces work together.",
+      "Our wealth management approach brings every part of your financial life into one coherent strategy, addressing cash flow, tax efficiency, and long-term growth so the pieces work together.",
     offerings: [
       "Personalized financial roadmap",
       "Risk assessment and mitigation",
@@ -41,10 +75,10 @@ export const SERVICES = [
     title: "Retirement Planning",
     icon: "Sunset",
     description:
-      "Retirement should be the reward of a life well-planned. We create detailed retirement projections and income strategies so you can transition with confidence, knowing every dollar is accounted for.",
+      "We build detailed retirement projections and income strategies so you can see what stepping away looks like before you do it, and adjust the plan while there is still time.",
     offerings: [
       "Retirement income projections",
-      "Social Security optimization",
+      "Social Security claiming strategies",
       "401(k) and IRA rollover strategies",
       "Healthcare cost planning",
     ],
@@ -53,7 +87,7 @@ export const SERVICES = [
     title: "Cash Flow Management",
     icon: "Wallet",
     description:
-      "Lasting wealth starts with knowing exactly where your money goes and putting it to work with intention. Our cash flow management approach aligns your income, spending, and savings so every dollar supports your goals.",
+      "Lasting wealth starts with knowing where your money goes and putting it to work with intention. We align your income, spending, and savings so each supports your goals.",
     offerings: [
       "Income and expense analysis",
       "Budgeting and savings strategy",
@@ -62,34 +96,10 @@ export const SERVICES = [
     ],
   },
   {
-    title: "Tax Planning",
-    icon: "Calculator",
-    description:
-      "Strategic tax planning is one of the most effective ways to preserve wealth. We work alongside your CPA to identify opportunities that reduce your tax burden today and for years to come.",
-    offerings: [
-      "Tax-loss harvesting",
-      "Roth conversion strategies",
-      "Charitable giving optimization",
-      "Capital gains management",
-    ],
-  },
-  {
-    title: "Estate Planning",
-    icon: "ScrollText",
-    description:
-      "Your legacy deserves careful stewardship. We coordinate with estate attorneys to ensure your wishes are clearly documented, tax-efficiently structured, and aligned with your family values.",
-    offerings: [
-      "Trust and estate structuring",
-      "Beneficiary coordination",
-      "Estate tax minimization",
-      "Succession planning",
-    ],
-  },
-  {
     title: "Insurance Solutions",
     icon: "Shield",
     description:
-      "The right insurance strategy protects everything you have built. We evaluate your current coverage and identify gaps, ensuring your family and assets are shielded from unexpected events.",
+      "The right insurance strategy protects what you have built. We review your current coverage and identify gaps that could leave your family or assets exposed to unexpected events.",
     offerings: [
       "Life insurance analysis",
       "Long-term care planning",
@@ -98,10 +108,34 @@ export const SERVICES = [
     ],
   },
   {
+    title: "Estate Planning",
+    icon: "ScrollText",
+    description:
+      "Your legacy deserves careful stewardship. We coordinate with your estate attorney so your wishes are clearly documented and the financial side of your plan lines up with them.",
+    offerings: [
+      "Trust and estate coordination",
+      "Beneficiary coordination",
+      "Estate tax considerations",
+      "Succession planning",
+    ],
+  },
+  {
+    title: "Tax Planning",
+    icon: "Calculator",
+    description:
+      "Taxes touch every part of a financial plan. We work alongside your CPA to identify planning opportunities and keep tax consequences in view when decisions are made.",
+    offerings: [
+      "Tax-loss harvesting",
+      "Roth conversion strategies",
+      "Charitable giving strategies",
+      "Capital gains management",
+    ],
+  },
+  {
     title: "Business Financial Planning",
     icon: "Briefcase",
     description:
-      "Business owners face unique financial complexities. From compensation strategies to exit planning, we help entrepreneurs align their business and personal wealth for maximum impact.",
+      "Business owners face their own financial complexities. From compensation strategies to exit planning, we help owners align their business and personal finances in one plan.",
     offerings: [
       "Business succession and exit planning",
       "Executive compensation analysis",
@@ -111,26 +145,71 @@ export const SERVICES = [
   },
 ];
 
-export const TEAM = [
+export const SERVICE_PILLARS = [
+  {
+    id: "plan",
+    title: "Plan",
+    intro: "Where your money is, where it is going, and what it needs to do.",
+    services: ["Wealth Management", "Retirement Planning", "Cash Flow Management"],
+  },
+  {
+    id: "protect",
+    title: "Protect",
+    intro: "Keeping what you have built intact for the people who depend on it.",
+    services: ["Insurance Solutions", "Estate Planning"],
+  },
+  {
+    id: "optimize",
+    title: "Optimize",
+    intro: "Making the plan more efficient every year it runs.",
+    services: ["Tax Planning", "Business Financial Planning"],
+  },
+];
+
+export interface TeamMember {
+  name: string;
+  title: string;
+  image: string;
+  bio: string;
+  credentials: string[];
+  // Direct BrokerCheck profile URL. Until supplied, the link falls back to the
+  // BrokerCheck home page and a [[CONFIRM]] marker renders next to it.
+  brokerCheckUrl: string | null;
+}
+
+// [[CONFIRM: full names for Nikki, Luis, and Lyle]]
+export const TEAM: TeamMember[] = [
   {
     name: "Jason Doss-Carter",
     title: "Founder & CEO",
     image: "/team/jason.jpg",
+    bio: "[[CONFIRM: bio for Jason Doss-Carter]]",
+    credentials: [],
+    brokerCheckUrl: null,
   },
   {
     name: "Nikki",
     title: "Financial Representative",
     image: "/team/nikki.jpg",
+    bio: "[[CONFIRM: bio for Nikki]]",
+    credentials: [],
+    brokerCheckUrl: null,
   },
   {
     name: "Luis",
     title: "Financial Representative",
     image: "/team/luis.jpg",
+    bio: "[[CONFIRM: bio for Luis]]",
+    credentials: [],
+    brokerCheckUrl: null,
   },
   {
     name: "Lyle",
     title: "Financial Representative",
     image: "/team/lyle.jpg",
+    bio: "[[CONFIRM: bio for Lyle]]",
+    credentials: [],
+    brokerCheckUrl: null,
   },
 ];
 
@@ -138,7 +217,7 @@ export const VALUES = [
   {
     title: "Integrity",
     icon: "ShieldCheck",
-    description: "We act in your best interest, always.",
+    description: "We put your interests first in every recommendation.",
   },
   {
     title: "Clarity",
@@ -168,13 +247,13 @@ export const PROCESS_STEPS = [
     step: 2,
     title: "Financial Analysis",
     description:
-      "Our team conducts a thorough review of your assets, liabilities, tax situation, and existing plans to identify opportunities.",
+      "Our team reviews your assets, liabilities, tax situation, and existing plans to identify opportunities.",
   },
   {
     step: 3,
     title: "Custom Strategy",
     description:
-      "We design a comprehensive, personalized plan that integrates cash flow management, tax planning, estate goals, and risk management.",
+      "We design a personalized plan that integrates cash flow management, tax planning, estate goals, and risk management.",
   },
   {
     step: 4,
@@ -186,20 +265,18 @@ export const PROCESS_STEPS = [
 
 export const FOOTER_LINKS = {
   company: [
-    { label: "About Us", href: "/about" },
-    { label: "Our Team", href: "/team" },
+    { label: "About", href: "/about" },
+    { label: "Team", href: "/team" },
     { label: "Contact", href: "/contact" },
   ],
   services: [
-    { label: "Wealth Management", href: "/services" },
-    { label: "Retirement Planning", href: "/services" },
-    { label: "Cash Flow Management", href: "/services" },
-    { label: "Tax Planning", href: "/services" },
+    { label: "Plan", href: "/services#plan" },
+    { label: "Protect", href: "/services#protect" },
+    { label: "Optimize", href: "/services#optimize" },
   ],
   legal: [
-    { label: "Privacy Policy", href: "#" },
-    { label: "Disclaimer", href: "#" },
-    { label: "Form CRS", href: "#" },
-    { label: "ADV Part 2", href: "#" },
+    { label: "Disclosures", href: "/disclosures" },
+    { label: "Form CRS", href: "/disclosures#form-crs" },
+    { label: "Privacy Policy", href: "/disclosures#privacy" },
   ],
 };
